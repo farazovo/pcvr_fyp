@@ -161,7 +161,6 @@ public class PolarHeartRateService : IHeartService
         {
             HeartRateAPI.BLEData res = new HeartRateAPI.BLEData();
 
-
             while (HeartRateAPI.PollData(out res, false))
             {
                 //bool hasRRIntervalData = (flags & 0x10) != 0; // Check bit 4 for RR-Interval data presence.

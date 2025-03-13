@@ -9,18 +9,10 @@ public class StartOnStart : MonoBehaviour
     void Start()
     {
         ART_DataRecorder.Instance.Open();
-
-        StartCoroutine(WaitForTime());
     }
 
-    IEnumerator WaitForTime()
-    {
-        yield return new WaitForSeconds(5.0f);
-
-    }
-
-    private void OnDestroy()
+/*    private void OnDestroy()
     {
         ART_DataRecorder.Instance.Close();
-    }
+    }*/
 }

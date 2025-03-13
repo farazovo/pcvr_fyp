@@ -12,10 +12,10 @@ public class ReactTime : ART_AdditionalData
 
     internal override string GetData()
     {
-        return $"{reactionTime},{isReacting},";
+       return $"{reactionTime},{isReacting},";
     }
 
-    private void Update()
+/*    private void Update()
     {
         if (isReacting)
         {
@@ -25,5 +25,5 @@ public class ReactTime : ART_AdditionalData
         {
             reactionTime = 0.0f;
         }
-    }
+    }*/
 }
