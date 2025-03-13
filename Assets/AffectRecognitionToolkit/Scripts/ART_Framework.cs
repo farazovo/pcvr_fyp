@@ -263,21 +263,27 @@ public class ART_Framework : BaseDevice
 #if DEBUG
                 Debug.Log($"Keys Found: {has_smile_keys}, Left: {Left_Smile}, Right: {Right_Smile}");
 #endif
-                lip_data = lipTrackingExport.GetLatestLipTrackingData();
-                if (!(has_smile_keys && lip_data.currLipWeightings.ContainsKey(Left_Smile) && lip_data.currLipWeightings.ContainsKey(Right_Smile)))
-                    has_smile_keys = GetSmileKeys(lip_data.currLipWeightings.Keys.ToArray());
-
-                if (!lip_data.IsUnityNull() && has_smile_keys)
+                try
                 {
-                    smile_data.Mouth_Smile_Left = lip_data.currLipWeightings[Left_Smile];
-                    smile_data.Mouth_Smile_Right = lip_data.currLipWeightings[Right_Smile];
-                    smile_window.AddData(smile_data, Time.time);
-                }
-                else
-                    print("NULL lip data");
+                    lip_data = lipTrackingExport.GetLatestLipTrackingData();
+                    if (!(has_smile_keys && lip_data.currLipWeightings.ContainsKey(Left_Smile) && lip_data.currLipWeightings.ContainsKey(Right_Smile)))
+                        has_smile_keys = GetSmileKeys(lip_data.currLipWeightings.Keys.ToArray());
 
-                // Smile Avg
-                smile = (smile_window.RollingAverage("Mouth_Smile_Left") + smile_window.RollingAverage("Mouth_Smile_Right")) / 2;
+                    if (!lip_data.IsUnityNull() && has_smile_keys)
+                    {
+                        smile_data.Mouth_Smile_Left = lip_data.currLipWeightings[Left_Smile];
+                        smile_data.Mouth_Smile_Right = lip_data.currLipWeightings[Right_Smile];
+                        smile_window.AddData(smile_data, Time.time);
+                    }
+                    else
+                        print("NULL lip data");
+
+                    // Smile Avg
+                    smile = (smile_window.RollingAverage("Mouth_Smile_Left") + smile_window.RollingAverage("Mouth_Smile_Right")) / 2;
+                }catch
+                {
+
+                }
             }
         }
 

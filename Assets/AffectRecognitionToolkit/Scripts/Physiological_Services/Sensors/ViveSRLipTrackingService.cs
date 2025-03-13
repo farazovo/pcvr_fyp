@@ -8,17 +8,7 @@ public class ViveSRLipTrackingService : ILipTrackingService
 {
     public override string DeviceName()
     {
-        throw new System.NotImplementedException();
-    }
-
-    internal override string FileHeader()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    internal override string GetData()
-    {
-        throw new System.NotImplementedException();
+        return "ThisFuckingSucks";
     }
 
     private static Thread lipThread;

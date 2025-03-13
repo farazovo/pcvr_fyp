@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class ILipTrackingService : BaseDevice
 {
-    internal LipTrackingData latestLipTrackingData;
+    internal LipTrackingData latestLipTrackingData = new LipTrackingData();
     public LipTrackingData GetLatestLipTrackingData() { return latestLipTrackingData; }
 
     internal override string FileHeader()

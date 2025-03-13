@@ -7,21 +7,6 @@ using ViveSR.anipal.Eye;
 
 public class ViveSREyeTrackingService : IEyeTrackingService
 {
-    public override string DeviceName()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    internal override string FileHeader()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    internal override string GetData()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public static Vector3 tobiiDir;
     public static Vector3 sRanipalDir;
     public static EyeTrackingData eyeData;
@@ -140,5 +125,10 @@ public class ViveSREyeTrackingService : IEyeTrackingService
         }
 
         latestEyeTrackingData = eyeData;
+    }
+
+    public override string DeviceName()
+    {
+        return "HelpMePlease";
     }
 }

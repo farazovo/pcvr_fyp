@@ -9,6 +9,7 @@ using UnityVicon;
 [RequireComponent(typeof(ViconDataStreamClient))]
 public class AvatarManager : MonoBehaviour
 {
+    [SerializeField] private bool Personalised = false;
     [SerializeField] string viconSubjectName;
     [SerializeField] GameObject avatarPersonal;
     [SerializeField] GameObject avatarGeneric;
@@ -87,6 +88,17 @@ public class AvatarManager : MonoBehaviour
         var ssGeneric = _avatarGeneric.AddComponent<SubjectScript>();
         ssGeneric.Client = _viconDataStreamClient;
         ssGeneric.SubjectName = viconSubjectName;
+
+
+        if (Personalised)
+        {
+            this.SetState(State.Personalised);
+
+        }
+        else
+        {
+            this.SetState(State.Generic);
+        }
     }
 
     private void OnDrawGizmos()
